@@ -349,7 +349,7 @@ static SSL_CTX * ssl_server_init(const char *keypath, const char *certpath)
 	return NULL;
     }
 
-    SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv2);
+    SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv3);
     if (use_padlock_engine == 1) {
 	if (SSL_CTX_set_cipher_list(ctx, "AES+SHA") != 1) {
 	    fprintf(stderr, "Error setting client cipher list\n");
@@ -363,7 +363,7 @@ static SSL_CTX * ssl_client_init(void)
 {
     SSL_CTX *ctx = SSL_CTX_new(SSLv23_client_method());
 
-    SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv2);
+    SSL_CTX_set_options(ctx, SSL_OP_NO_SSLv3);
     if (use_padlock_engine == 1) {
 	if (SSL_CTX_set_cipher_list(ctx, "AES+SHA") != 1) {
 	    fprintf(stderr, "Error setting client cipher list\n");
